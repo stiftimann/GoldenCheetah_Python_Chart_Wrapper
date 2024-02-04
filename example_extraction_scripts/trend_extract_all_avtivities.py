@@ -2,8 +2,14 @@ import threading
 from datetime import datetime
 import os
 
-start = datetime.now()
+# Inputs:
+# Location for exportet Data:
 store_location = "d:/Eigene Dateien/_Stifti/Fahrrad/Berechnungen/GoldenCheeta/Git/GoldenCheetah_Python_Chart_Wrapper/GC_Wrapper/GC_DATA/Tina"
+# Number of exportet Acivities beginning from the latest (z_stop = 2000 means all acivities).
+z_stop = 5
+
+start = datetime.now()
+
 athlete = GC.athlete()
 try:
     athlete_body = GC.seasonMeasures(all=True, group="Body")
@@ -11,13 +17,13 @@ try:
 except SystemError:
     print("No body measurement found create empty file")
     athlete_body_found = False
+
+# Activity List:
 activity = GC.activity()
 activity_list = sorted(GC.activities( filter='Data contains "P" and Data contains "H"'), reverse = True)
 
-
+# Activities:
 z = 0
-z_stop = 5
-
 for i in activity_list:
     activity = GC.activity(activity=i)
     z += 1
