@@ -25,11 +25,11 @@ for i in activity_list:
     filename = "activity_single_extract_data_" + str(dt) + ".py"
     print('Nr.: ' + str(z) + ' Filename: ' + str(filename))
     f = open(os.path.join(store_location, filename), "w+")
-    f.writelines("nan=0 \n")
-    f.writelines("activity_data = { \n")
+    f.writelines("nan=0 chr(10)+chr(13)")
+    f.writelines("activity_data = { chr(10)+chr(13)")
     for key in activity.keys():
-        f.writelines("    '" + str(key) + "': " + str(list(activity[key])) + ", \n")
-    f.writelines("\n }")
+        f.writelines("    '" + str(key) + "': " + str(list(activity[key])) + ", chr(10)+chr(13)")
+    f.writelines("chr(10)+chr(13) }")
     f.close()	
     if z == z_stop:
         break
@@ -37,7 +37,7 @@ for i in activity_list:
 
 def write_activity_list():
     f = open(os.path.join(store_location, "activity_list.py"), "w+")
-    f.writelines("import datetime\n")
+    f.writelines("import datetimechr(10)+chr(13)")
     f.writelines("activity_list = " + str(activity_list))
     f.close()
 
